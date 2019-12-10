@@ -55,6 +55,14 @@ int parseArgumentInt(
 bool parseArgumentBool(
     int argc, const char* argv[], const char* arg, bool def_val);
 
+
+namespace {
+  struct empty_flush {
+    void operator()() const{
+
+    }
+  };
+}
 /**
  * @param Fn functor to execute
  * @param Fe data eviction functor
@@ -64,7 +72,7 @@ double measureWithWarmup(
     Fn&& fn,
     int warmupIterations,
     int measuredIterations,
-    Fe&& fe = [] () {},
+    const Fe& fe = empty_flush(),
     bool useOpenMP = false) {
   for (int i = 0; i < warmupIterations; ++i) {
     // Evict data first

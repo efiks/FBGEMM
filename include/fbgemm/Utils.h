@@ -138,7 +138,7 @@ FBGEMM_API void fbgemmForceIsa(inst_set_t);
 /**
  * @brief Enable AVX512-256 path for Intel(r) Xeon(r) D servers
  */
-void fbgemmEnableAvx512Ymm(bool);
+FBGEMM_API void fbgemmEnableAvx512Ymm(bool);
 
 /**
  * @brief Are we running on a Xeon-D cpu?
